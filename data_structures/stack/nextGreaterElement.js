@@ -10,13 +10,18 @@
     const stack = [];
     const res = new Array(arr.length).fill(-1);
 
+    // Iterate through array from right to left
     for (let i = arr.length - 1; i >= 0; i -= 1) {
+        // While the stack is non-empty and the element at the top is less than curr
+        // pop the top of the stack off
         while (stack.length && stack[stack.length - 1] <= arr[i]) {
             stack.pop();
-        }
+        } // If the stack has remaining elements, that means the curr top of stack
+        // is larger than the curr element and is the NGE.
         if (stack.length > 0) {
             res[i] = stack[stack.length - 1];
         }
+        // Pushing curr element onto the stack
         stack.push(arr[i]);
     }
     return res;
